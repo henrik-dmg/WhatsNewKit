@@ -4,18 +4,18 @@ import SwiftUI
 
 public extension WhatsNew {
     
-    /// A WhatsNew Text
+    /// A WhatsNew Text.
     struct Text: Hashable {
         
         // MARK: Properties
         
-        /// The NSAttributedString
+        /// The `NSAttributedString`
         public var attributedString: NSAttributedString
 
         // MARK: Initializer
         
-        /// Creates a new instance of `WhatsNew.Text` from a given String
-        /// - Parameter string: The String
+        /// Creates a new instance of `WhatsNew.Text` from a given String.
+        /// - Parameter string: The `String`
         public init(
             _ string: String
         ) {
@@ -31,30 +31,45 @@ public extension WhatsNew {
 @available(iOS 15.0, macOS 12.0, *)
 public extension WhatsNew.Text {
     
-    /// Creates a new instance of `WhatsNew.Text` from a given NSAttributedString
-    /// - Parameter attributedString: The NSAttributedString
+    /// Creates a new instance of `WhatsNew.Text` from a given `NSAttributedString`.
+    /// - Parameter attributedString: The `NSAttributedString`
     init(
         _ attributedString: NSAttributedString
     ) {
         self.attributedString = attributedString
     }
     
-    /// Creates a new instance of `WhatsNew.Text` from a given AttributedString
-    /// - Parameter attributedString: The AttributedString
+    /// Creates a new instance of `WhatsNew.Text` from a given `AttributedString`.
+    /// - Parameter attributedString: The `AttributedString`
     init(
         _ attributedString: AttributedString
     ) {
         self.attributedString = .init(attributedString)
     }
-    
+
+}
+
+// MARK: - LocalizedStringResource Initializer
+
+@available(iOS 16.0, macOS 13.0, *)
+public extension WhatsNew.Text {
+
+    /// Creates a new instance of `WhatsNew.Text` from a given `LocalizedStringResource`.
+    /// - Parameter string: The `LocalizedStringResource`
+    init(
+        _ string: LocalizedStringResource
+    ) {
+        self.init(AttributedString(localized: string))
+    }
+
 }
 
 // MARK: - ExpressibleByStringLiteral
 
 extension WhatsNew.Text: ExpressibleByStringLiteral {
     
-    /// Creates a new instance of `WhatsNew.Text` from a given String literal
-    /// - Parameter value: The String literal
+    /// Creates a new instance of `WhatsNew.Text` from a given `String` literal.
+    /// - Parameter value: The `String` literal
     public init(
         stringLiteral value: String
     ) {
